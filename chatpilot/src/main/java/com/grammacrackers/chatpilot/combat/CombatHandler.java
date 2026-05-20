@@ -187,6 +187,17 @@ public class CombatHandler {
         player.setYaw(yaw);
         player.setPitch(pitch);
     }
+    
+    public void forceExit() {
+        if (inCombat) {
+            exitCombat();
+        } else {
+            target = null;
+            combatTotalTicks = 0;
+            ticksSinceLastThreat = 0;
+            ticksSinceDamage = Integer.MAX_VALUE / 2;
+        }
+    }
 
     /** Public probe still useful for the watchdog. */
     public boolean hostilesInRange() {
