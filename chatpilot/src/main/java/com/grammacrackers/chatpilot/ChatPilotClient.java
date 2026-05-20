@@ -1,5 +1,5 @@
 package com.grammacrackers.chatpilot;
-
+import com.grammacrackers.chatpilot.safety.LavaEscapeManager;
 import com.grammacrackers.chatpilot.baritone.BaritoneController;
 import com.grammacrackers.chatpilot.baritone.StuckDetector;
 import com.grammacrackers.chatpilot.chat.RestreamClient;
@@ -44,6 +44,9 @@ public class ChatPilotClient implements ClientModInitializer {
     /** v1.1.0: hype-dance trigger that listens for tips and emits emote + music. */
     public static DanceManager DANCE;
 
+    public static LavaEscapeManager LAVA_ESCAPE;
+    
+
     @Override
     public void onInitializeClient() {
         ChatPilotMod.LOGGER.info("[ChatPilot] Client init starting...");
@@ -61,6 +64,7 @@ public class ChatPilotClient implements ClientModInitializer {
         YOUTUBE   = new YouTubeChatPoller();
         VISITED   = new VisitedStructuresManager();
         DANCE     = new DanceManager();
+        LAVA_ESCAPE = new LavaEscapeManager();
 
         // OAuth: load credentials/tokens; start refresh loop; wire token notifications.
         AUTH = new RestreamAuthManager();
